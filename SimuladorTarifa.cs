@@ -10,19 +10,19 @@ public class SimuladorTarifa
 
         //DECLARACION DE VARIABLES
         string nombre, nombreVehiculo;
-        double distancia, tarifaBase, costoKm, subtotal, descuento, tarifaFinal;
+        double distancia, tarifaBase, costoKm, subtotal, tarifaFinal = 0.00, descuento = 0.00;
         int hora, tipoVehiculo;
-        bool esHoraPico;
+        bool esHoraPico = false;
 
         //ENTRADA DE DATOS
         Console.WriteLine("Nombre del Pasajero");
-        string nombre = Console.ReadLine();
+        nombre = Console.ReadLine();
         
         Console.WriteLine("Ingrese distancia del viaje (KM)"); 
-        double distancia = double.Parse(Console.ReadLine());
+        distancia = double.Parse(Console.ReadLine());
         
         Console.WriteLine("Hora de Salida (0hrs - 23hrs)");
-        int hora = int.Parse(Console.ReadLine());
+        hora = int.Parse(Console.ReadLine());
         
         Console.WriteLine("\nTipo de Vehículo: ");
         Console.WriteLine(" 1. Económico");
@@ -30,7 +30,7 @@ public class SimuladorTarifa
         Console.WriteLine(" 3. Premium");
         Console.WriteLine(" 4. Moto");
         Console.WriteLine("Ingrese la opción: ");
-        int tipoVehiculo = int.Parse(Console.ReadLine());
+        tipoVehiculo = int.Parse(Console.ReadLine());
 
         //Proceso
         switch (tipoVehiculo)
@@ -82,7 +82,7 @@ public class SimuladorTarifa
         }
 
         //TARIFA MINIMA Y REDONDEO
-        tarifaBase = Math.Max(subtotal, 5.00);
+        tarifaFinal = Math.Max(subtotal, 5.00);
         tarifaFinal = Math.Round(tarifaFinal, 2);
 
         //SALIDA - RESUMEN DEL VIAJE
@@ -101,7 +101,7 @@ public class SimuladorTarifa
         {
             Console.WriteLine("Descuento: No Aplica");
         }
-        onsole.WriteLine("=====================================================");
+        Console.WriteLine("=====================================================");
         Console.WriteLine("          TARIFA FINAL: S/ " + tarifaFinal);
         Console.WriteLine("====================================================");
         Console.WriteLine("Pasajero: " + nombre);
